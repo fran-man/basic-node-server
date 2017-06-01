@@ -1,0 +1,22 @@
+{
+  "name": "basic-node-server",
+  "version": "1.0.0",
+  "description": "first node server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fran-man/basic-node-server.git"
+  },
+  "author": "George",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fran-man/basic-node-server/issues"
+  },
+  "homepage": "https://github.com/fran-man/basic-node-server#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
