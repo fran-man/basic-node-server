@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fran-man/basic-node-server#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "winston": "^2.3.1"
   }
 }
