@@ -1,31 +1,30 @@
 const express = require('express')
-const app = express()
 const logger = require('winston')
-var instancePort
 
-if(process.argv[2] == undefined || process.argv[2] == null) {
-	instancePort = instancePort = 1234
+function startServer(port) {
+	app = express()
+	logger.configure({
+	    transports: [
+	      new (logger.transports.File)({ filename: 'logs/' + port + '.log' })
+	    ]
+	  });
+
+	app.get('/', function(req, res) {
+		logger.info('Root hit on port: ' + port)
+		res.send('Hello from instance running on port ' + port + '!')
+	})
+
+	app.get('/:param', function(req, res) {
+		logger.info(req.params.param + ' endpoint hit on server port ' +port+ '!')
+		res.send('Hello from ' + req.params.param + '!\nServer: ' + port)
+	})
+
+	app.listen(port, function() {
+		logger.info('Listening on port: ' + port)
+	})
 }
-else {
-	instancePort = process.argv[2]
-}
 
-logger.configure({
-    transports: [
-      new (logger.transports.File)({ filename: 'logs/' + instancePort + '.log' })
-    ]
-  });
-
-app.get('/', function(req, res) {
-	logger.info('Root hit on port: ' + instancePort)
-	res.send('Hello from instance running on port ' + instancePort + '!')
-})
-
-app.get('/:param', function(req, res) {
-	logger.info(req.params.param + ' endpoint hit on server port ' +instancePort+ '!')
-	res.send('Hello from ' + req.params.param + '!\nServer: ' + instancePort)
-})
-
-app.listen(instancePort, function() {
-	logger.info('Listening on port: ' + instancePort)
-})
+startServer(1234)
+startServer(1334)
+startServer(1434)
+startServer(1534)
