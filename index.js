@@ -1,11 +1,11 @@
 const express = require('express')
-const logger = require('winston')
+const winston = require('winston')
 
 function startServer(port) {
-	app = express()
-	logger.configure({
+	var app = express()
+	var logger = new (winston.Logger)({
 	    transports: [
-	      new (logger.transports.File)({ filename: 'logs/' + port + '.log' })
+	      new (winston.transports.File)({ label: port, filename: 'logs/' + port + '.log' })
 	    ]
 	  });
 
