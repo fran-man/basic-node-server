@@ -27,6 +27,10 @@ app.get('/:param', function(req, res) {
 	res.send('Hello from ' + req.params.param + '!\nServer: ' + port)
 })
 
+app.get('/healthcheck', function(req, res) {
+	res.send('success')
+})
+
 app.listen(port, function() {
 	logger.info('Listening on port: ' + port)
 })
