@@ -22,13 +22,14 @@ app.get('/', function(req, res) {
 	res.send('Hello from instance running on port ' + port + '!')
 })
 
-app.get('/:param', function(req, res) {
-	logger.info(req.params.param + ' endpoint hit on server port ' +port+ '!')
-	res.send('Hello from ' + req.params.param + '!\nServer: ' + port)
-})
 
 app.get('/healthcheck', function(req, res) {
 	res.send('success')
+})
+
+app.get('/:param', function(req, res) {
+	logger.info(req.params.param + ' endpoint hit on server port ' +port+ '!')
+	res.send('Hello from ' + req.params.param + '!\nServer: ' + port)
 })
 
 app.listen(port, function() {
